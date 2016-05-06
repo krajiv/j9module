@@ -1,0 +1,1 @@
+java -mp mlib -m com.microfocus.idm.app "$*"

@@ -1,0 +1,12 @@
+set -x
+echo "Cleaning up modules..."
+rm -rf mods/com.microfocus.idm.tracer
+
+echo "Cleaning up mlibs..."
+rm -rf mlib/com.microfocus.idm.tracer.jar
+
+echo "Compiling tracer module..."
+javac -d mods/com.microfocus.idm.tracer/ -cp mods/com.microfocus.idm.tracer/ src/com.microfocus.idm.tracer/module-info.java src/com.microfocus.idm.tracer/com/microfocus/idm/tracer/emoticon/*.* src/com.microfocus.idm.tracer/com/microfocus/idm/tracer/*.*
+
+echo "Creating module ..."
+jar --create --file=mlib/com.microfocus.idm.tracer.jar --main-class=com.microfocus.idm.tracer.Tracer -C mods/com.microfocus.idm.tracer .

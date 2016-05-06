@@ -1,0 +1,3 @@
+#!/bin/bash
+
+export PATH=/drives/l/3rdPartySoftware/Java/jdk-9-ea-114/bin/:$PATH

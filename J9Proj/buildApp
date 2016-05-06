@@ -1,0 +1,12 @@
+set -x
+echo "Cleaning up modules..."
+rm -rf mlibs/com.microfocus.idm.app
+
+echo "Cleaning up mlibs..."
+rm -rf mlib/com.microfocus.idm.app.jar
+
+echo "Compiling app module..."
+javac -d mods/com.microfocus.idm.app/ -mp mlib/com.microfocus.idm.tracer.jar -cp mods/com.microfocus.idm.app/  src/com.microfocus.idm.app/module-info.java src/com.microfocus.idm.app/com/microfocus/idm/app/*.*
+
+echo "Creating module ..."
+jar --create --file=mlib/com.microfocus.idm.app.jar --main-class=com.microfocus.idm.app.App -C mods/com.microfocus.idm.app .
